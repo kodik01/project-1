@@ -3,112 +3,33 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Text, View, Button, StyleSheet, Image, Pressable} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Searchbar } from 'react-native-paper';
+import ikon1 from '../../asset/gambar_awal/beluga.jpg'
+
 
 const search_akun = () => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const onChangeSearch = query => setSearchQuery(query);
     return (
-        <View style={{
-            flex:1,
-            justifyContent: 'space-around',
-            alignItems: 'baseline',
-            margin: 10,
-          
-        }}>
-          <ScrollView>
-
-          
-            <Text style={{
-                fontSize: 30,
-                fontWeight: 'bold',
-                margin: 10
-            }}>
-                Discover
+       <View>
+          <Text style={{
+            fontSize: 50,
+            fontWeight: 'bold',
+            margin: 4,
+            pading: 10
+         }}>
+              search
             </Text>
 
-            <Text style={{
-                fontSize: 20,
-                fontWeight: 'normal',
-            }}>
-                for you
-            </Text>
+            <Searchbar
+             placeholder="Search all photo"
+             onChangeText={onChangeSearch}
+             value={searchQuery}
+             icon={null}
+          />
 
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-
-            <Image 
-            source={require('../../asset/gambar_awal/beluga.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
-            <Image 
-            source={require('../../asset/gambar_awal/hihihi.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
-            <Image 
-            source={require('../../asset/gambar_awal/gigachad.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
-
-            </ScrollView>
-
-            <Text style={{
-                fontSize: 20,
-                fontWeight: 'normal',
-            }}>
-                browser all
-            </Text>
-
-              <View style={{
-                flex:1,
-                justifyContent: 'space-around',
-                alignItems: 'flex-start',
-                margin: 10,
-                flexDirection:'row'
-          }}>
-
-               <View>
-               <Image 
-              source={require('../../asset/gambar_awal/hihihi.jpg')}
-              style={{width: 167, height: 220,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime.jpg')}
-              style={{width: 167, height: 220,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime3.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime5.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/gigachad.jpg')}
-              style={{width: 167, height: 160,margin: 10,borderRadius: 10}} />
-              </View> 
-              
-              <View>
-              <Image 
-              source={require('../../asset/gambar_awal/beluga.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime2.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime4.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              <Image 
-              source={require('../../asset/gambar_awal/nime6.jpg')}
-              style={{width: 167, height: 310,margin: 10,borderRadius: 10}} />
-              </View>
-
-
-              </View>
-              <Pressable style={{
-              alignItems: 'center',
-              borderWidth: 1,
-              borderRadius: 10
-              }}>
-              <Text style={{
-                fontSize: 20,
-                fontWeight: 'normal',
-            }}>
-                see more
-            </Text>
-              </Pressable>
-            </ScrollView>
-        </View>
+       </View>
     );
   };
   

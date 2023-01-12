@@ -6,6 +6,9 @@ import home_screen from './pages/home_screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import profile_akun from './pages/profile'
 import search_akun from './pages/search';
+import nextHome from './pages/nextHome';
+import login_screen from './pages/login';
+import signup_screen from './pages/signup';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,26 +32,32 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-
+const mainapp =() =>{
+  return(
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={home_screen} options={{headerShown: false}}/>
+        <Tab.Screen name="nextHome" component={nextHome} options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}}/>
+        <Tab.Screen name="search" component={search_akun} options={{headerShown: false}}/>
+        <Tab.Screen name="profile" component={profile_akun} options={{headerShown: false} }/>
+      </Tab.Navigator>
+  )
+} 
 const App = () => {
   return (
-    <NavigationContainer independent={true}>
-       <Tab.Navigator>
-        <Tab.Screen name="Home" component={home_screen} options={{headerShown: false}}/>
-        <Tab.Screen name="search" component={search_akun} options={{headerShown: false}}/>
-        <Tab.Screen name="profile" component={profile_akun} options={{headerShown: false}}/>
-
-      </Tab.Navigator>
-    {/* <Stack.Navigator
+    <NavigationContainer>
+       
+    <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: false,   
         animationEnabled: false
       }}>
+      <Stack.Screen name="login" component={login_screen} options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}}/>
+      <Stack.Screen name="signup" component={signup_screen} options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}}/>
       <Stack.Screen 
-        name = "home_screen" 
-        component={home_screen}
+        name = "mainapp" 
+        component={mainapp}
       />
-    </Stack.Navigator> */}
+    </Stack.Navigator> 
   </NavigationContainer>
 
   );

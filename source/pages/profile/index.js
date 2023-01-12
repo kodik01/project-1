@@ -1,10 +1,22 @@
 import React, {onPress} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Text, View, Button, StyleSheet, Image, Pressable} from 'react-native';
+import {Text, View, Button, StyleSheet, Image, Pressable, TouchableOpacity} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import {auth} from '../../../firebase';
+import { signOut } from 'firebase/auth';
 
-const profile_akun = () => {
+const profile_akun = ({navigation}) => {
+  const handleSignOut = async () => {
+    await signOut(auth)
+    .then((re)=> {
+      navigation.replace("login")
+    })
+    .catch((error)=> {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    })
+  }
     return (
         <View>
 
@@ -48,6 +60,21 @@ const profile_akun = () => {
                 edit profile
                 </Text>
               </Pressable>
+              <TouchableOpacity onPress={() => handleSignOut()} style={{
+              alignItems: 'center',
+              borderWidth: 1,
+              borderRadius: 10,
+              paddingHorizontal: 100,
+              backgroundColor:'black'
+              }}>
+              <Text style={{
+                fontSize: 20,
+                fontWeight: 'normal',
+                color:'white'
+            }}>
+                logout
+                </Text>
+              </TouchableOpacity>
           </View>
 
           <ScrollView>
@@ -100,8 +127,6 @@ const profile_akun = () => {
               </View>
               </View>
           </ScrollView>
-
-
         </View>
       
 

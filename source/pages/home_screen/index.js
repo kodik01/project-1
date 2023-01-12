@@ -3,8 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Text, View, Button, StyleSheet, Image, Pressable} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
-const home_screen = () => {
+import gambar1 from '../../asset/gambar_awal/beluga.jpg'
+import gambar2 from '../../asset/gambar_awal/hihihi.jpg'
+import gambar3 from '../../asset/gambar_awal/gigachad.jpg'
+const home_screen = ({navigation}) => {
     return (
         <View style={{
             flex:1,
@@ -14,8 +16,6 @@ const home_screen = () => {
           
         }}>
           <ScrollView>
-
-          
             <Text style={{
                 fontSize: 30,
                 fontWeight: 'bold',
@@ -32,16 +32,28 @@ const home_screen = () => {
             </Text>
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-
-            <Image 
-            source={require('../../asset/gambar_awal/beluga.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
-            <Image 
-            source={require('../../asset/gambar_awal/hihihi.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
-            <Image 
-            source={require('../../asset/gambar_awal/gigachad.jpg')}
-            style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
+            <Pressable
+              title="beluga.jpg"
+              onPress={() => navigation.navigate('nextHome',{gbr: gambar1})}>
+              <Image 
+              source={require('../../asset/gambar_awal/beluga.jpg')}
+              style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
+            </Pressable>
+            <Pressable
+              title="hihihi.jpg"
+              onPress={() => navigation.navigate('nextHome',{gbr :gambar2})}>
+              <Image 
+              source={require('../../asset/gambar_awal/hihihi.jpg')}
+              style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
+            </Pressable>
+            <Pressable
+              title="hihihi.jpg"
+              onPress={() => navigation.navigate('nextHome',{gbr :gambar3})}>
+              <Image 
+              source={require('../../asset/gambar_awal/gigachad.jpg')}
+              style={{width: 343, height: 387,margin: 10,borderRadius: 10}} />
+           </Pressable>
+ 
 
             </ScrollView>
 
